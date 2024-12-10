@@ -36,7 +36,6 @@
             <div class="form-group">
                 <label asp-for="Address" class="control-label"></label>
                 <textarea asp-for="Address" class="form-control"></textarea>
-                <span asp-validation-for="Address" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -44,4 +43,7 @@
             </div>
         </form>
     </div>
+    <p style="margin-top: 10px">
+        <a asp-action="Index">Go to list</a>
+    </p>
 </div>
