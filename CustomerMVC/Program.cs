@@ -1,7 +1,20 @@
+using MongoDB.Driver;
+using CustomerMVC.Repositories.Interfaces;
+using CustomerMVC.Repositories.Realizations;
+using CustomerMVC.Services.Interfaces;
+using CustomerMVC.Services.Realization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<IMongoClient>(s => new MongoClient("mongodb://localhost:27017"));
+builder.Services.AddScoped<IMongoDatabase>(s => s.GetRequiredService<IMongoClient>().GetDatabase("SomeStoreDB"));
+
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+
+
 
 var app = builder.Build();
 
@@ -22,6 +35,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Customer}/{action=Index}/{id?}");
 
 app.Run();
