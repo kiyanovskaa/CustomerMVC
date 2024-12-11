@@ -8,9 +8,9 @@ namespace CustomerMVC.Services.Realization
     public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository _repository;
-        private readonly CustomerValidator _validator;
+        private readonly ICustomerValidator _validator;
 
-        public CustomerService(ICustomerRepository repository, CustomerValidator validator)
+        public CustomerService(ICustomerRepository repository, ICustomerValidator validator)
         {
             _repository = repository;
             _validator = validator;

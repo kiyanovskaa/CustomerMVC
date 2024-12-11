@@ -14,7 +14,7 @@ builder.Services.AddScoped<IMongoDatabase>(s => s.GetRequiredService<IMongoClien
 
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
-builder.Services.AddScoped<CustomerValidator>();
+builder.Services.AddScoped<ICustomerValidator, CustomerValidator>();
 
 
 var app = builder.Build();
