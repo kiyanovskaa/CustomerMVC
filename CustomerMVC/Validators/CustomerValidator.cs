@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace CustomerMVC.Validators
 {
-    public class CustomerValidator
+    public class CustomerValidator: ICustomerValidator
     {
         private readonly ICustomerRepository _repository;
 
