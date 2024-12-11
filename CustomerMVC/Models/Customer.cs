@@ -18,6 +18,6 @@ namespace CustomerMVC.Models
         public string Email { get; set; }
         [RegularExpression(@"^\+380\d{9}$", ErrorMessage = "Not a valid Phone number. Format should be +380XXXXXXXXX")]
         public string Phone { get; set; }
-        public string Address { get; set; }
+        public string? Address { get; set; } 
     }
 }

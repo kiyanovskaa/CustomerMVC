@@ -27,6 +27,7 @@ namespace CustomerMVC.Controllers
         [HttpPost]
         public IActionResult Create(Customer customer)
         {
+
             if (ModelState.IsValid)
             {
                 try

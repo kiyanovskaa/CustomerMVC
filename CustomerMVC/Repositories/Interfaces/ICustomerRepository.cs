@@ -6,5 +6,7 @@ namespace CustomerMVC.Repositories.Interfaces
     {
         Customer Create(Customer customer);
         List<Customer> GetAll();
+        Customer GetByEmail(string email);
+        Customer GetByPhone(string phone);
     }
 }

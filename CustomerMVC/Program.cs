@@ -3,6 +3,7 @@ using CustomerMVC.Repositories.Interfaces;
 using CustomerMVC.Repositories.Realizations;
 using CustomerMVC.Services.Interfaces;
 using CustomerMVC.Services.Realization;
+using CustomerMVC.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,7 @@ builder.Services.AddScoped<IMongoDatabase>(s => s.GetRequiredService<IMongoClien
 
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
-
+builder.Services.AddScoped<CustomerValidator>();
 
 
 var app = builder.Build();

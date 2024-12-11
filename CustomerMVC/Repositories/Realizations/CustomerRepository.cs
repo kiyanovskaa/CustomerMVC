@@ -22,5 +22,15 @@ namespace CustomerMVC.Repositories.Realizations
         {
             return _customers.Find(customer => true).ToList();
         }
+
+        public Customer GetByEmail(string email)
+        {
+            return _customers.Find(c => c.Email == email).FirstOrDefault();
+        }
+
+        public Customer GetByPhone(string phone)
+        {
+            return _customers.Find(c => c.Phone == phone).FirstOrDefault();
+        }
     }
 }

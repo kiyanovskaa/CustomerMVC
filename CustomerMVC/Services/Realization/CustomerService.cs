@@ -1,23 +1,23 @@
 ﻿using CustomerMVC.Models;
 using CustomerMVC.Repositories.Interfaces;
 using CustomerMVC.Services.Interfaces;
+using CustomerMVC.Validators;
 
 namespace CustomerMVC.Services.Realization
 {
     public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository _repository;
+        private readonly CustomerValidator _validator;
 
-        public CustomerService(ICustomerRepository repository)
+        public CustomerService(ICustomerRepository repository, CustomerValidator validator)
         {
             _repository = repository;
+            _validator = validator;
         }
         public Customer AddCustomer(Customer customer)
         {
-            if (string.IsNullOrWhiteSpace(customer.FirstName) || string.IsNullOrWhiteSpace(customer.LastName))
-            {
-                throw new ArgumentException("First and Last names are required.");
-            }
+            _validator.Validate(customer);
             return _repository.Create(customer);
         }
 
